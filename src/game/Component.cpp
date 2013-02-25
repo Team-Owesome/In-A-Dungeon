@@ -5,11 +5,11 @@
 //
 
 
-#include "World.hpp"
+#include "Component.hpp"
 
 using namespace ow;
 
-Entity World::createEntity()
+const char* Component::getType()
 {
-    return m_entityManager.createEntity();
+    return "ow::Component";
 }

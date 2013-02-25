@@ -98,8 +98,22 @@ public:
     }
 };
 
+#include "game/Component.hpp"
+
+class Lol : public ow::Component
+{
+
+};
+
 int main(int argc, char* argv[])
 {
+    ow::Component component;
+    Lol component2;
+
+    std::cout << component.getType() << '\n';
+    std::cout << component2.getType() << '\n';
+
+
     ow::Application application;
     return static_cast<int>(application.run(new ow::GameState()));
 }

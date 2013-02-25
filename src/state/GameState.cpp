@@ -11,7 +11,6 @@
 #include <cmath>
 
 #include "../core/Application.hpp"
-#include "../game/PlayerEntity.hpp"
 
 using namespace ow;
 
@@ -24,7 +23,6 @@ GameState::GameState()
         getApplication()->exit("Could not load font.");
     }
 
-    m_entities.push_back(&m_playerEntity);
     m_debugText.setFont(m_font);
 }
 
@@ -96,6 +94,5 @@ void GameState::think()
     for (auto it = m_entities.begin(); it != m_entities.end(); ++it)
     {
         Entity* entity = *it;
-        entity->think();
     }
 }

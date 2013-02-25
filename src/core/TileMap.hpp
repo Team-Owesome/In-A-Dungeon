@@ -5,15 +5,13 @@
 #include <cstdint>
 #include <map>
 
-#include "Entity.hpp"
-
 namespace ow
 {
     class TileMap
     {
     private:
         std::int8_t* m_tileMap;
-        std::map<int, std::map<int, Entity*>> m_objectMap;
+        //std::map<int, std::map<int, Entity*>> m_objectMap;
 
         unsigned int m_width;
         unsigned int m_height;

@@ -11,10 +11,8 @@
 
 #include <iostream>
 #include "../core/State.hpp"
-#include "../core/Entity.hpp"
+#include "../game/Entity.hpp"
 #include "../core/TileMap.hpp"
-#include "../game/TurnManager.hpp"
-#include "../game/PlayerEntity.hpp"
 
 namespace ow
 {
@@ -23,10 +21,8 @@ namespace ow
     private:
         unsigned int m_round;
 
-        TurnManager m_turnManager;
         TileMap m_tileMap;
 
-        PlayerEntity m_playerEntity;
 
         std::vector<Entity*> m_entities;
 

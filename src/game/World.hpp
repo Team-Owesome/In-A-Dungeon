@@ -11,12 +11,27 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 
-#include "../core/Entity.hpp"
+#include "Entity.hpp"
 
-class World
+#include "manager/EntityManager.hpp"
+#include "manager/ComponentManager.hpp"
+
+namespace ow
 {
-    std::vector<Entity*> m_entities;
-};
+    class World
+    {
+    private:
+        EntityManager m_entityManager;
+        ComponentManager m_componentManager;
+
+
+    public:
+
+        Entity createEntity();
+
+    };
+}
 
 #endif //WORLD_H

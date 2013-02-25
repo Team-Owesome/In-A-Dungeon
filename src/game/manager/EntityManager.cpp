@@ -5,11 +5,13 @@
 //
 
 
-#include "World.hpp"
+#include "EntityManager.hpp"
+
+#include "../Entity.hpp"
 
 using namespace ow;
 
-Entity World::createEntity()
+Entity EntityManager::createEntity()
 {
-    return m_entityManager.createEntity();
+    return Entity();
 }
