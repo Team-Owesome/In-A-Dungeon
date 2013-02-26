@@ -13,7 +13,7 @@ TileMap::TileMap()
 }
 
 TileMap::TileMap(unsigned int width,
-                 unsigned int height) : TileMap()
+                 unsigned int height)
 {
     create(width, height);
 }

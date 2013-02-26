@@ -16,7 +16,11 @@ endforeach()
 list(REMOVE_DUPLICATES INCLUDE_DIRS)
 
 # Libraries
-set(SFML_STATIC_LIBRARIES false)
+if(APPLE)
+	set(SFML_STATIC_LIBRARIES false)
+else()
+	set(SFML_STATIC_LIBRARIES true)
+endif()
 
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)

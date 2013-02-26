@@ -50,8 +50,8 @@ void GameState::handleEvent(sf::Event& event)
     }
     else if (event.type == sf::Event::MouseMoved)
     {
-        m_selectedX = static_cast<unsigned int>(std::roundf((event.mouseMove.x - 8.0f) / 16.0f));
-        m_selectedY = static_cast<unsigned int>(std::roundf((event.mouseMove.y - 8.0f) / 16.0f));
+        m_selectedX = static_cast<unsigned int>(std::floorf((event.mouseMove.x - 8.0f) / 16.0f));
+        m_selectedY = static_cast<unsigned int>(std::floorf((event.mouseMove.y - 8.0f) / 16.0f));
     }
 }
 

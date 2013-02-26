@@ -20,7 +20,7 @@ namespace ow
 {
     class ComponentManager
     {
-        std::unordered_map<Entity, std::unordered_map<std::string, Component>> m_components;
+        std::unordered_map<Entity*, std::unordered_map<std::string, Component*>> m_components;
 
     private:
         void addComponent(Entity& entity);
