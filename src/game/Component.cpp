@@ -9,6 +9,8 @@
 
 using namespace ow;
 
+
+
 const char* Component::getType()
 {
     return "ow::Component";

@@ -99,6 +99,7 @@ public:
 };
 
 #include "game/Component.hpp"
+#include "game/World.hpp"
 
 class Lol : public ow::Component
 {
@@ -108,7 +109,45 @@ class Lol : public ow::Component
 int main(int argc, char* argv[])
 {
     ow::Component component;
-    Lol component2;
+    ow::Component component2;
+
+
+    component.test = ow::Property<float>::create();
+    component.test->setValue(2323.0f);
+
+    component2.test = component.test;
+    component2.test->setValue(26.0f);
+
+    ow::World world;
+
+    ow::Entity entity = world.createEntity();
+    ow::Entity entity2 = world.createEntity();
+    ow::Entity entity3 = world.createEntity();
+    ow::Entity entity4 = world.createEntity();
+
+
+    std::cout << entity.getId() << '\n';
+    std::cout << entity2.getId() << '\n';
+    std::cout << entity3.getId() << '\n';
+    std::cout << entity4.getId() << '\n';
+
+
+    world.removeEntity(entity3);
+    ow::Entity entity5 = world.createEntity();
+
+
+    std::cout << entity.getId() << '\n';
+    std::cout << entity2.getId() << '\n';
+    std::cout << entity5.getId() << '\n';
+    std::cout << entity4.getId() << '\n';
+
+
+
+    std::cout << component.test->getValue() << ", " << component2.test->getValue() << '\n';
+
+
+
+
 
     std::cout << component.getType() << '\n';
     std::cout << component2.getType() << '\n';

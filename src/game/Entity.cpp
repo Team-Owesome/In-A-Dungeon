@@ -9,23 +9,26 @@
 
 using namespace ow;
 
-void Entity::setX(unsigned int x)
+Entity::Entity()
 {
-    m_x = x;
 }
 
-void Entity::setY(unsigned int y)
+Entity::Entity(unsigned int id)
 {
-    m_y = y;
+    m_id = id;
 }
 
-unsigned int Entity::getX()
+bool Entity::operator==(const Entity& other) const
 {
-    return m_x;
+    return m_id == other.getId();
 }
 
-
-unsigned int Entity::getY()
+bool Entity::operator!=(const Entity& other) const
 {
-    return m_y;
+    return m_id != other.getId();
+}
+
+unsigned int Entity::getId() const
+{
+    return m_id;
 }

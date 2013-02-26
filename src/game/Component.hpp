@@ -10,13 +10,20 @@
 #define COMPONENT_H
 
 #include <iostream>
+#include <unordered_map>
+#include <string>
+
+#include "Property.hpp"
 
 namespace ow
 {
     class Component
     {
+    private:
     public:
         virtual const char* getType();
+
+        Property<float>::ptr test;
     };
 }
 

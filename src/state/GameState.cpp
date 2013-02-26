@@ -71,7 +71,6 @@ void GameState::draw(sf::RenderWindow& window)
     {
         Entity* entity = *it;
 
-        shape.setPosition(entity->getX() * 16, entity->getY() * 16);
         window.draw(shape);
     }
 

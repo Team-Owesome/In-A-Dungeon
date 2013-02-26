@@ -13,3 +13,8 @@ Entity World::createEntity()
 {
     return m_entityManager.createEntity();
 }
+
+void World::removeEntity(const Entity& entity)
+{
+    m_entityManager.removeEntity(entity);
+}

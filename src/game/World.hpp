@@ -11,12 +11,11 @@
 
 #include <iostream>
 #include <vector>
-#include <map>
+#include <unordered_map>
 
 #include "Entity.hpp"
 
 #include "manager/EntityManager.hpp"
-#include "manager/ComponentManager.hpp"
 
 namespace ow
 {
@@ -24,12 +23,12 @@ namespace ow
     {
     private:
         EntityManager m_entityManager;
-        ComponentManager m_componentManager;
 
 
     public:
 
         Entity createEntity();
+        void removeEntity(const Entity& entity);
 
     };
 }

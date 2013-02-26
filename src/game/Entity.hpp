@@ -13,20 +13,25 @@
 
 namespace ow
 {
+    class EntityManager;
+
     class Entity
     {
     private:
-        unsigned int m_x;
-        unsigned int m_y;
+        unsigned int m_id;
+
+    protected:
+        Entity(unsigned int id);
 
     public:
 
-        unsigned int getX();
-        unsigned int getY();
+        Entity();
+        unsigned int getId() const;
 
-        void setX(unsigned int x);
-        void setY(unsigned int y);
+        bool operator==(const Entity& other) const;
+        bool operator!=(const Entity& other) const;
 
+    friend class EntityManager;
     };
 }
 
