@@ -7,7 +7,6 @@
 
 #include "EntityManager.hpp"
 
-#include "../Entity.hpp"
 
 using namespace ow;
 
@@ -20,7 +19,7 @@ EntityManager::~EntityManager()
 }
 
 
-Entity EntityManager::createEntity()
+Entity EntityManager::create()
 {
     Entity nextEntity;
 

@@ -11,14 +11,15 @@
 
 #include <iostream>
 #include <vector>
+#include <bitset>
 #include <unordered_map>
 
 #include "../Component.hpp"
+#include "../Entity.hpp"
+
 
 namespace ow
 {
-    class Entity;
-
     class EntityManager
     {
     private:
@@ -27,13 +28,28 @@ namespace ow
         std::vector<Entity> m_aliveEntities;
         std::vector<Entity> m_deadEntities;
 
+        std::vector<std::vector<std::shared_ptr<BaseComponent>>> m_componentEntities;
+        std::vector<std::vector<Entity::Id>> m_entityComponents;
+
         unsigned int m_nextEntityId;
 
     public:
         EntityManager();
         ~EntityManager();
 
-        Entity createEntity();
+        Entity create();
+
+        template <typename C>
+        std::shared_ptr<C> assign(Entity& entity, std::shared_ptr<C> component)
+        {
+
+            std::shared_ptr<BaseComponent> basePtr = component;
+
+
+
+            return nullptr;
+        }
+
         void removeEntity(const Entity& entity);
 
     };

@@ -11,7 +11,7 @@ using namespace ow;
 
 Entity World::createEntity()
 {
-    return m_entityManager.createEntity();
+    return m_entityManager.create();
 }
 
 void World::removeEntity(const Entity& entity)

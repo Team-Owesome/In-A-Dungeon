@@ -25,6 +25,8 @@ namespace ow
 
     public:
 
+        typedef unsigned int Id;
+
         Entity();
         unsigned int getId() const;
 
