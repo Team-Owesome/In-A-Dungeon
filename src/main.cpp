@@ -3,6 +3,7 @@
 #include "core/Application.hpp"
 #include "core/State.hpp"
 #include "core/TileMap.hpp"
+#include "game/Component.hpp"
 
 #include "state/GameState.hpp"
 
@@ -98,17 +99,21 @@ public:
     }
 };
 
-#include "game/Component.hpp"
 #include "game/World.hpp"
 
-class Lol : public ow::Component
+struct TestComponent : ow::Component<TestComponent>
+{
+
+};
+
+struct TestComponent2 : ow::Component<TestComponent2>
 {
 
 };
 
 int main(int argc, char* argv[])
 {
-    ow::Component component;
+    /*w::Component component;
     ow::Component component2;
 
 
@@ -116,7 +121,18 @@ int main(int argc, char* argv[])
     component.test->setValue(2323.0f);
 
     component2.test = component.test;
-    component2.test->setValue(26.0f);
+    component2.test->setValue(26.0f);*/
+
+    TestComponent comp;
+    TestComponent2 comp2;
+
+    std::cout << ow::Component<TestComponent>::getId() << '\n'
+              << ow::Component<TestComponent>::getId() << '\n'
+              << ow::Component<TestComponent2>::getId() << '\n'
+              << ow::Component<TestComponent2>::getId() << '\n'
+              << std::endl;
+
+
 
     ow::World world;
 
@@ -124,24 +140,24 @@ int main(int argc, char* argv[])
     ow::Entity entity2 = world.createEntity();
     ow::Entity entity3 = world.createEntity();
     ow::Entity entity4 = world.createEntity();
-
+/*
 
     std::cout << entity.getId() << '\n';
     std::cout << entity2.getId() << '\n';
     std::cout << entity3.getId() << '\n';
-    std::cout << entity4.getId() << '\n';
+    std::cout << entity4.getId() << '\n';*/
 
 
     world.removeEntity(entity3);
     ow::Entity entity5 = world.createEntity();
 
-
+/*
     std::cout << entity.getId() << '\n';
     std::cout << entity2.getId() << '\n';
     std::cout << entity5.getId() << '\n';
-    std::cout << entity4.getId() << '\n';
+    std::cout << entity4.getId() << '\n';*/
 
-
+/*
 
     std::cout << component.test->getValue() << ", " << component2.test->getValue() << '\n';
 
@@ -150,7 +166,7 @@ int main(int argc, char* argv[])
 
 
     std::cout << component.getType() << '\n';
-    std::cout << component2.getType() << '\n';
+    std::cout << component2.getType() << '\n';*/
 
 
     ow::Application application;

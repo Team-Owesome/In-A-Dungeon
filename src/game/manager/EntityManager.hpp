@@ -22,7 +22,7 @@ namespace ow
     class EntityManager
     {
     private:
-        std::vector<std::unordered_map<std::string, Component*>> m_components;
+        //std::vector<std::unordered_map<std::string, Component*>> m_components;
 
         std::vector<Entity> m_aliveEntities;
         std::vector<Entity> m_deadEntities;
@@ -36,8 +36,6 @@ namespace ow
         Entity createEntity();
         void removeEntity(const Entity& entity);
 
-        void addComponent(Entity& entity, Component& component);
-        Component* getComponent(Entity& entity, std::string componentType);
     };
 }
 

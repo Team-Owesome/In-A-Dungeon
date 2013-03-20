@@ -17,14 +17,34 @@
 
 namespace ow
 {
-    class Component
+    namespace private
+    {
+        static unsigned int NextComponentId = 0;
+    }
+
+    template<class Derived>
+    struct Component
     {
     private:
-    public:
-        virtual const char* getType();
+        static bool Initialised;
+        static unsigned int Id;
 
-        Property<float>::ptr test;
+    public:
+
+        Component()
+        {
+        }
+
+        static unsigned int getId()
+        {
+            return Id;
+        }
     };
+
+
+    template <class Derived> bool Component<Derived>::Initialised = 0;
+    template <class Derived> unsigned int Component<Derived>::Id = private::NextComponentId++;
+
 }
 
 #endif //COMPONENT_H
