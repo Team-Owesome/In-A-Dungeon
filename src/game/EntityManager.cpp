@@ -29,9 +29,9 @@ void EntityManager::resizeForComponent(BaseComponent::Family family)
 
 void EntityManager::resizeForEntity(Entity::Id entity)
 {
-    if (m_entityComponentMask.size() <= entity)
+    if (m_entityComponentMasks.size() <= entity)
     {
-        m_entityComponentMask.resize(entity + 1);
+        m_entityComponentMasks.resize(entity + 1);
         for (auto& component : m_entityComponents)
         {
             m_entityComponents.resize(entity + 1);

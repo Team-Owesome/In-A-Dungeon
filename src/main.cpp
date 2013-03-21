@@ -133,8 +133,10 @@ int main(int argc, char* argv[])
 
     std::cout << ow::Component<TestComponent>::Family << '\n'
               << ow::Component<TestComponent>::Family << '\n'
+              << TestComponent::Family << '\n'
               << ow::Component<TestComponent2>::Family << '\n'
               << ow::Component<TestComponent2>::Family << '\n'
+              << TestComponent2::Family << '\n'
               << std::endl;
 
 
@@ -150,6 +152,27 @@ int main(int argc, char* argv[])
               << component2->getFamily() << '\n'
               << component->test << '\n'
               << component2->test2 << '\n';
+
+    std::bitset<4> testSet;
+    std::bitset<4> testSet2;
+
+    testSet[1] = true;
+    testSet[3] = true;
+
+    testSet2[0] = true;
+
+    ow::EntityManager::ComponentMask;
+
+
+
+
+    auto entities = manager.entitiesWithComponents<TestComponent, TestComponent2>();
+
+
+
+    std::cout << entities.size() << '\n'
+              << testSet2 << '\n'
+              << ((testSet &= testSet2) == testSet2) << '\n';
 
 /*
 
