@@ -4,6 +4,8 @@
 #include "core/State.hpp"
 #include "core/TileMap.hpp"
 #include "game/Component.hpp"
+#include "game/manager/EntityManager.hpp"
+
 
 #include "state/GameState.hpp"
 
@@ -126,20 +128,20 @@ int main(int argc, char* argv[])
     TestComponent comp;
     TestComponent2 comp2;
 
-    std::cout << ow::Component<TestComponent>::getId() << '\n'
-              << ow::Component<TestComponent>::getId() << '\n'
-              << ow::Component<TestComponent2>::getId() << '\n'
-              << ow::Component<TestComponent2>::getId() << '\n'
+    ow::EntityManager manager;
+
+    std::cout << ow::Component<TestComponent>::Family << '\n'
+              << ow::Component<TestComponent>::Family << '\n'
+              << ow::Component<TestComponent2>::Family << '\n'
+              << ow::Component<TestComponent2>::Family << '\n'
               << std::endl;
 
 
+    ow::Entity entity = manager.create();
 
-    ow::World world;
+    manager.assign<TestComponent>(entity);
+    manager.assign<TestComponent2>(entity);
 
-    ow::Entity entity = world.createEntity();
-    ow::Entity entity2 = world.createEntity();
-    ow::Entity entity3 = world.createEntity();
-    ow::Entity entity4 = world.createEntity();
 /*
 
     std::cout << entity.getId() << '\n';
@@ -148,8 +150,8 @@ int main(int argc, char* argv[])
     std::cout << entity4.getId() << '\n';*/
 
 
-    world.removeEntity(entity3);
-    ow::Entity entity5 = world.createEntity();
+   /* world.removeEntity(entity3);
+    ow::Entity entity5 = world.createEntity();*/
 
 /*
     std::cout << entity.getId() << '\n';

@@ -27,8 +27,6 @@ find_package(GLEW REQUIRED)
 find_package(SFML 2 COMPONENTS network system window graphics audio)
 find_package(GLM REQUIRED)
 
-
-
 include_directories(${GLEW_INCLUDE_DIR})
 include_directories(${OPENGL_INCLUDE_DIR})
 include_directories(${SFML_INCLUDE_DIR})

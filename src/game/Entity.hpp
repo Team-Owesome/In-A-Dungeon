@@ -28,10 +28,12 @@ namespace ow
         typedef unsigned int Id;
 
         Entity();
-        unsigned int getId() const;
+        Entity::Id getId() const;
 
-        bool operator==(const Entity& other) const;
-        bool operator!=(const Entity& other) const;
+        bool operator ==(const Entity& other) const;
+        bool operator !=(const Entity& other) const;
+
+        operator Entity::Id();
 
     friend class EntityManager;
     };

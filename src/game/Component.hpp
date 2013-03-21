@@ -17,21 +17,21 @@
 
 namespace ow
 {
-    namespace _private
-    {
-        static unsigned int NextComponentId = 0;
-    }
-
     struct BaseComponent
     {
+    public:
+        typedef unsigned int Family;
 
+    public:
+        static BaseComponent::Family NextFamilyId;
     };
+
 
     template<typename Derived>
     struct Component : public BaseComponent
     {
-    private:
-        static unsigned int Id;
+    public:
+        static const BaseComponent::Family Family;
 
     public:
 
@@ -39,13 +39,9 @@ namespace ow
         {
         }
 
-        static unsigned int getId()
-        {
-            return Id;
-        }
     };
 
-    template <class Derived> unsigned int Component<Derived>::Id = _private::NextComponentId++;
+    template <class Derived> BaseComponent::Family const Component<Derived>::Family = NextFamilyId++;
 }
 
 #endif //COMPONENT_H

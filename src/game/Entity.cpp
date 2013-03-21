@@ -18,17 +18,22 @@ Entity::Entity(unsigned int id)
     m_id = id;
 }
 
-bool Entity::operator==(const Entity& other) const
+bool Entity::operator ==(const Entity& other) const
 {
     return m_id == other.getId();
 }
 
-bool Entity::operator!=(const Entity& other) const
+bool Entity::operator !=(const Entity& other) const
 {
     return m_id != other.getId();
 }
 
-unsigned int Entity::getId() const
+Entity::operator Entity::Id()
+{
+    return getId();
+}
+
+Entity::Id Entity::getId() const
 {
     return m_id;
 }

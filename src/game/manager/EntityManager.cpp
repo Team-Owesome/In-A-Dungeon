@@ -18,6 +18,27 @@ EntityManager::~EntityManager()
 {
 }
 
+void EntityManager::resizeForComponent(BaseComponent::Family family)
+{
+    if (m_entityComponents.size() <= family)
+    {
+        m_entityComponents.resize(family + 1);
+        m_entityComponents[family].resize(m_nextEntityId);
+    }
+}
+
+void EntityManager::resizeForEntity(Entity::Id entity)
+{
+    if (m_entityComponentMask.size() <= entity)
+    {
+        m_entityComponentMask.resize(entity + 1);
+        for (auto& component : m_entityComponents)
+        {
+            m_entityComponents.resize(entity + 1);
+        }
+    }
+}
+
 
 Entity EntityManager::create()
 {
@@ -28,16 +49,17 @@ Entity EntityManager::create()
     {
         nextEntity = m_deadEntities.back();
         m_deadEntities.pop_back();
-
-        m_aliveEntities.push_back(nextEntity);
     }
     else
     {
         unsigned int newId = m_nextEntityId++;
         nextEntity = Entity(newId);
+
+        resizeForEntity(nextEntity.getId());
     }
 
     m_aliveEntities.push_back(nextEntity);
+
     return nextEntity;
 }
 
