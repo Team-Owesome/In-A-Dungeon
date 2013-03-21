@@ -4,7 +4,7 @@
 #include "core/State.hpp"
 #include "core/TileMap.hpp"
 #include "game/Component.hpp"
-#include "game/manager/EntityManager.hpp"
+#include "game/EntityManager.hpp"
 
 
 #include "state/GameState.hpp"
@@ -105,12 +105,13 @@ public:
 
 struct TestComponent : ow::Component<TestComponent>
 {
-
+    const char* test;
 };
 
 struct TestComponent2 : ow::Component<TestComponent2>
 {
 
+    const char* test2;
 };
 
 int main(int argc, char* argv[])
@@ -139,8 +140,16 @@ int main(int argc, char* argv[])
 
     ow::Entity entity = manager.create();
 
-    manager.assign<TestComponent>(entity);
-    manager.assign<TestComponent2>(entity);
+    manager.assign<TestComponent>(entity)->test = "qdwqdwqdwq";
+    manager.assign<TestComponent2>(entity)->test2 = "qwe2222";
+
+    TestComponent::sPtr component = manager.get<TestComponent>(entity);
+    TestComponent2::sPtr component2 = manager.get<TestComponent2>(entity);
+
+    std::cout << component->getFamily() << '\n'
+              << component2->getFamily() << '\n'
+              << component->test << '\n'
+              << component2->test2 << '\n';
 
 /*
 

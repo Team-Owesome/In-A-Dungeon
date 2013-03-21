@@ -15,7 +15,7 @@
 
 #include "Entity.hpp"
 
-#include "manager/EntityManager.hpp"
+#include "EntityManager.hpp"
 
 namespace ow
 {

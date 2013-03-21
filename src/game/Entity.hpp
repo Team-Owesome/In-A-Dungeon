@@ -17,23 +17,22 @@ namespace ow
 
     class Entity
     {
-    private:
-        unsigned int m_id;
-
-    protected:
-        Entity(unsigned int id);
-
     public:
-
         typedef unsigned int Id;
 
-        Entity();
         Entity::Id getId() const;
 
         bool operator ==(const Entity& other) const;
         bool operator !=(const Entity& other) const;
 
-        operator Entity::Id();
+        operator Entity::Id() const;
+
+    protected:
+        Entity(EntityManager* manager, Entity::Id id);
+
+    private:
+        EntityManager* m_entityManager;
+        unsigned int m_id;
 
     friend class EntityManager;
     };

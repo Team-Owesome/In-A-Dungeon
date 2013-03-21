@@ -42,28 +42,28 @@ void EntityManager::resizeForEntity(Entity::Id entity)
 
 Entity EntityManager::create()
 {
-    Entity nextEntity;
+    Entity::Id nextEntityId;
 
     // Reuse dead entites
     if (m_deadEntities.size() != 0)
     {
-        nextEntity = m_deadEntities.back();
+        nextEntityId = m_deadEntities.back();
         m_deadEntities.pop_back();
     }
     else
     {
         unsigned int newId = m_nextEntityId++;
-        nextEntity = Entity(newId);
+        nextEntityId = newId;
 
-        resizeForEntity(nextEntity.getId());
+        resizeForEntity(nextEntityId);
     }
 
-    m_aliveEntities.push_back(nextEntity);
+    m_aliveEntities.push_back(nextEntityId);
 
-    return nextEntity;
+    return Entity(this, nextEntityId);
 }
 
-void EntityManager::removeEntity(const Entity& entity)
+void EntityManager::destroy(Entity::Id entity)
 {
     auto it = std::find(m_aliveEntities.begin(), m_aliveEntities.end(), entity);
 

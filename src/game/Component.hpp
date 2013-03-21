@@ -31,6 +31,9 @@ namespace ow
     struct Component : public BaseComponent
     {
     public:
+        typedef std::shared_ptr<Derived> sPtr;
+        typedef std::weak_ptr<Derived> wPtr;
+
         static const BaseComponent::Family Family;
 
     public:
@@ -39,6 +42,10 @@ namespace ow
         {
         }
 
+        BaseComponent::Family getFamily()
+        {
+            return Family;
+        }
     };
 
     template <class Derived> BaseComponent::Family const Component<Derived>::Family = NextFamilyId++;

@@ -9,12 +9,9 @@
 
 using namespace ow;
 
-Entity::Entity()
+Entity::Entity(EntityManager* manager, unsigned int id)
 {
-}
-
-Entity::Entity(unsigned int id)
-{
+    m_entityManager = manager;
     m_id = id;
 }
 
@@ -28,7 +25,7 @@ bool Entity::operator !=(const Entity& other) const
     return m_id != other.getId();
 }
 
-Entity::operator Entity::Id()
+Entity::operator Entity::Id() const
 {
     return getId();
 }

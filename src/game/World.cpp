@@ -16,5 +16,5 @@ Entity World::createEntity()
 
 void World::removeEntity(const Entity& entity)
 {
-    m_entityManager.removeEntity(entity);
+    m_entityManager.destroy(entity);
 }

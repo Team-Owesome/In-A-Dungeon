@@ -14,9 +14,8 @@
 #include <bitset>
 #include <unordered_map>
 
-#include "../Component.hpp"
-#include "../Entity.hpp"
-
+#include "Component.hpp"
+#include "Entity.hpp"
 
 namespace ow
 {
@@ -25,8 +24,8 @@ namespace ow
     private:
         //std::vector<std::unordered_map<std::string, Component*>> m_components;
 
-        std::vector<Entity> m_aliveEntities;
-        std::vector<Entity> m_deadEntities;
+        std::vector<Entity::Id> m_aliveEntities;
+        std::vector<Entity::Id> m_deadEntities;
 
         std::vector<std::bitset<64>> m_entityComponentMask;
         std::vector<std::vector<std::shared_ptr<BaseComponent>>> m_entityComponents;
@@ -44,6 +43,7 @@ namespace ow
         ~EntityManager();
 
         Entity create();
+        void destroy(Entity::Id entity);
 
         template<typename C>
         std::shared_ptr<C> assign(Entity::Id entity)
@@ -73,7 +73,8 @@ namespace ow
         {
             if (m_entityComponentMask[entityId][C::Family])
             {
-                return m_entityComponents[C::Family][entityId];
+                // Trust me compiler it is of type "C"
+                return std::static_pointer_cast<C>(m_entityComponents[C::Family][entityId]);
             }
             else
             {
@@ -81,7 +82,6 @@ namespace ow
             }
         }
 
-        void removeEntity(const Entity& entity);
 
     };
 }
